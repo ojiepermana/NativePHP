@@ -1,0 +1,10 @@
+node_modules
+vendor
+storage
+bootstrap/cache
+public/build
+public/**/*.min.js
+public/**/*.min.css
+.idea
+.vscode
+

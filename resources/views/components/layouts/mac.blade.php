@@ -18,32 +18,50 @@
         }
     </script>
 </head>
-<body class="flex justify-center bg-neutral-100 p-24 h-screen">
-    <div class="flex min-w-0 max-w-6xl flex-auto flex-row overflow-hidden bg-neutral-200 rounded-2xl">
-     <aside class="pr-3 flex flex-col items-center justify-start py-6 w-14 backdrop-blur-3xl gap-4">
-        <!-- Icon 1 - Home -->
-        <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center hover:bg-white/30 transition-colors cursor-pointer">
-            <flux:icon icon="house" class="w-5 h-5 text-gray-600" />
+<body class="flex justify-center h-screen overflow-hidden">
+    <div class="relative flex min-w-0 flex-auto flex-row overflow-hidden inset-0 backdrop-blur-2xl bg-white/85 dark:bg-neutral-900/70 h-full">
+
+    <aside class="pl-2 w-16 h-full flex flex-col items-center justify-between py-4">
+         <!-- macOS window controls -->
+        <div class="absolute top-2 left-3 z-10 flex items-center gap-2 select-none pointer-events-none">
+            <span class="w-3 h-3 rounded-full bg-[#ff5f56] ring-1 ring-black/10 dark:ring-white/10" aria-hidden="true"></span>
+            <span class="w-3 h-3 rounded-full bg-[#ffbd2e] ring-1 ring-black/10 dark:ring-white/10" aria-hidden="true"></span>
+            <span class="w-3 h-3 rounded-full bg-[#27c93f] ring-1 ring-black/10 dark:ring-white/10" aria-hidden="true"></span>
+        </div>
+        <div class="flex flex-col items-center gap-2 pt-4">
+            <!-- Icon 1 - Home -->
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center hover:bg-white/30 dark:hover:bg-white/15 transition-colors cursor-pointer">
+                <flux:icon icon="house" class="w-6 h-6 text-gray-600 dark:text-gray-300" />
+            </div>
+
+            <!-- Icon 2 - Search -->
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center hover:bg-white/30 dark:hover:bg-white/15 transition-colors cursor-pointer">
+                <flux:icon icon="search" class="w-6 h-6 text-gray-600 dark:text-gray-300" />
+            </div>
+
+            <!-- Icon 3 - Settings -->
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center hover:bg-white/30 dark:hover:bg-white/15 transition-colors cursor-pointer">
+                <flux:icon icon="settings" class="w-6 h-6 text-gray-600 dark:text-gray-300" />
+            </div>
+
+            <!-- Icon 4 - User -->
+            <div class="w-12 h-12 rounded-xl flex items-center justify-center hover:bg-white/30 dark:hover:bg-white/15 transition-colors cursor-pointer">
+                <flux:icon icon="user" class="w-6 h-6 text-gray-600 dark:text-gray-300" />
+            </div>
+        </div>
+        <div class="mt-auto flex items-center justify-center">
+            <flux:switch x-data x-model="$flux.dark" class="rotate-90" />
         </div>
 
-        <!-- Icon 2 - Search -->
-        <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center hover:bg-white/30 transition-colors cursor-pointer">
-            <flux:icon icon="search" class="w-5 h-5 text-gray-600" />
-        </div>
-
-        <!-- Icon 3 - Settings -->
-        <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center hover:bg-white/30 transition-colors cursor-pointer">
-            <flux:icon icon="settings" class="w-5 h-5 text-gray-600" />
-        </div>
-
-        <!-- Icon 4 - User -->
-        <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center hover:bg-white/30 transition-colors cursor-pointer">
-            <flux:icon icon="user" class="w-5 h-5 text-gray-600" />
-        </div>
      </aside>
-     <main class="flex-1 flex flex-col m-2 bg-neutral-50 rounded-2xl shadow-xs border border-accent/20">
-        <flux:main class="p-0!">
-            {{ $slot }}
+     <main class="flex-1 flex flex-col my-2 ml-2 mr-2 bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-700 rounded-xl shadow-xl">
+         <flux:main class="p-0! flex items-stretch overflow-hidden h-full min-h-0">
+             <div id="sidebar" class="w-72 shrink-0 sticky top-0 p-4 flex flex-col h-full border-r border-neutral-200 dark:border-neutral-700">
+            asasaassa
+            </div>
+                <div id="content" class="flex-1 overflow-auto   h-full min-h-0">
+                {{ $slot }}
+            </div>
         </flux:main>
      </main>
     </div>

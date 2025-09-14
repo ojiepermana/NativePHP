@@ -7,7 +7,7 @@ use Livewire\Component;
 
 class DashboardPage extends Component
 {
-    #[Layout('components.layouts.app')]
+    #[Layout('components.layouts.mac')]
     public function render()
     {
         return view('livewire.pages.dashboard-page');

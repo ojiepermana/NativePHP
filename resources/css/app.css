@@ -1,5 +1,7 @@
 @import 'tailwindcss';
-@import './theme';
+@import '../../vendor/livewire/flux/dist/flux.css';
+@custom-variant dark (&:where(.dark, .dark *));
+@import './theme.css';
 @source '../views';
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 
@@ -208,8 +210,6 @@
   --color-white-a11: oklch(1 0 none / 0.9);
   --color-white-a12: oklch(1 0 none / 0.95);
 }
-
-@import './theme.css';
 
 
 /* -------------------------------------------------------------------------- */
