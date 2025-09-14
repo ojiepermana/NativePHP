@@ -18,9 +18,9 @@
         }
     </script>
 </head>
-<body class="flex justify-center bg-neutral-100 p-24 h-screen">
-    <div class="flex min-w-0 max-w-6xl flex-auto flex-row overflow-hidden bg-neutral-200 rounded-2xl">
-     <aside class="pr-3 flex flex-col items-center justify-start py-6 w-14 backdrop-blur-3xl gap-4">
+<body class="flex justify-center h-screen overflow-hidden ">
+    <div class="flex min-w-0 flex-auto flex-row overflow-hidden inset-0 backdrop-blur-2xl bg-white/85 h-full">
+     <aside class="pl-2 flex flex-col items-center justify-center w-18 space-y-2 h-full">
         <!-- Icon 1 - Home -->
         <div class="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center hover:bg-white/30 transition-colors cursor-pointer">
             <flux:icon icon="house" class="w-5 h-5 text-gray-600" />
@@ -41,9 +41,14 @@
             <flux:icon icon="user" class="w-5 h-5 text-gray-600" />
         </div>
      </aside>
-     <main class="flex-1 flex flex-col m-2 bg-neutral-50 rounded-2xl shadow-xs border border-accent/20">
-        <flux:main class="p-0!">
-            {{ $slot }}
+     <main class="flex-1 flex flex-col my-2 ml-2 mr-2  bg-white border border-neutral-200 rounded-xl shadow-xl">
+         <flux:main class="p-0! flex items-stretch overflow-hidden h-full min-h-0">
+             <div id="sidebar" class="w-72 shrink-0 sticky top-0 p-4 flex flex-col  h-full border-r border-neutral-200  ">
+            asasaassa
+            </div>
+                <div id="content" class="flex-1 overflow-auto   h-full min-h-0">
+                {{ $slot }}
+            </div>
         </flux:main>
      </main>
     </div>
