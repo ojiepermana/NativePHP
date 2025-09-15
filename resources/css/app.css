@@ -255,3 +255,18 @@
     color: var(--color-neutral-12);
   }
 }
+
+/* -------------------------------------------------------------------------- */
+/* Utilities: Desktop drag regions                                            */
+/* -------------------------------------------------------------------------- */
+@layer utilities {
+  .app-drag {
+    /* background-color: red; */
+    -webkit-app-region: drag;
+    cursor: move;
+    user-select: none;
+  }
+  .app-no-drag {
+    -webkit-app-region: no-drag;
+  }
+}
