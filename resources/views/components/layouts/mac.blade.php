@@ -17,147 +17,28 @@
         if (!window.localStorage.getItem('flux.appearance')) {
             window.Flux?.applyAppearance('light');
         }
-
-        // NativePHP Window Control Functions
-        function closeApp() {
-            fetch('/native/close', {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                }
-            })
-                .then(response => response.json())
-                .then(data => console.log('Close requested:', data))
-                .catch(error => console.error('Error:', error));
-        }
-
-        function minimizeApp() {
-            fetch('/native/minimize', {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                }
-            })
-                .then(response => response.json())
-                .then(data => console.log('Minimize requested:', data))
-                .catch(error => console.error('Error:', error));
-        }
-
-        function maximizeApp() {
-            fetch('/native/maximize', {
-                method: 'POST',
-                headers: {
-                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]')?.getAttribute('content') || '',
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json'
-                }
-            })
-                .then(response => response.json())
-                .then(data => console.log('Maximize requested:', data))
-                .catch(error => console.error('Error:', error));
-        }
-
-        // Alternative direct approach using window methods if available
-        document.addEventListener('DOMContentLoaded', function() {
-            // Try different possible API methods
-            if (typeof window !== 'undefined') {
-                // Check for electron APIs
-                if (window.require) {
-                    const { remote } = window.require('electron');
-                    if (remote) {
-                        window.closeApp = () => remote.getCurrentWindow().close();
-                        window.minimizeApp = () => remote.getCurrentWindow().minimize();
-                        window.maximizeApp = () => {
-                            const win = remote.getCurrentWindow();
-                            if (win.isMaximized()) {
-                                win.unmaximize();
-                            } else {
-                                win.maximize();
-                            }
-                        };
-                    }
-                }
-
-                // Check for NativePHP specific APIs
-                if (window.nativephp) {
-                    window.closeApp = () => window.nativephp.closeWindow();
-                    window.minimizeApp = () => window.nativephp.minimizeWindow();
-                    window.maximizeApp = () => window.nativephp.maximizeWindow();
-                }
-            }
-        });
     </script>
 </head>
-<body class="flex justify-center h-screen overflow-hidden backdrop-blur-2xl bg-white/50 dark:bg-black/50">
-    <div class="relative flex min-w-0 flex-auto flex-row overflow-hidden  h-full">
+<body class="flex justify-center h-screen overflow-hidden">
+    <div class="relative flex min-w-0 flex-auto flex-row overflow-hidden  backdrop-blur-3xl bg-white/85 dark:bg-black/80  h-full rounded-2xl">
          <!-- Drag area at the top of main -->
-        <div class="app-drag ml-18 absolute h-5 -mt-2.5 min-w-0 rounded-t-2xl w-full">&nbsp;</div>
+    <div class="app-drag ml-18 absolute h-5 -mt-2.5 min-w-0 rounded-t-3xl w-full">&nbsp;</div>
 
-    <aside class="pl-2 w-16 h-full flex flex-col items-center justify-between py-4">
-         <!-- macOS window controls -->
-        <div class="absolute top-2 left-3 z-10 flex items-center gap-2 select-none">
-            <!-- Close button (red) -->
-            <button onclick="closeApp()"
-                    class="w-3 h-3 rounded-full bg-[#ff5f56] ring-1 ring-black/10 dark:ring-white/10 hover:bg-[#ff4136] transition-colors cursor-pointer flex items-center justify-center group"
-                    title="Close">
-                <span class="opacity-0 group-hover:opacity-100 text-black text-xs font-bold transition-opacity">×</span>
-            </button>
-
-            <!-- Minimize button (yellow) -->
-            <button onclick="minimizeApp()"
-                    class="w-3 h-3 rounded-full bg-[#ffbd2e] ring-1 ring-black/10 dark:ring-white/10 hover:bg-[#ffb000] transition-colors cursor-pointer flex items-center justify-center group"
-                    title="Minimize">
-                <span class="opacity-0 group-hover:opacity-100 text-black text-xs font-bold transition-opacity">−</span>
-            </button>
-
-            <!-- Maximize/Restore button (green) -->
-            <button onclick="maximizeApp()"
-                    class="w-3 h-3 rounded-full bg-[#27c93f] ring-1 ring-black/10 dark:ring-white/10 hover:bg-[#00d515] transition-colors cursor-pointer flex items-center justify-center group"
-                    title="Maximize">
-                <span class="opacity-0 group-hover:opacity-100 text-black text-xs font-bold transition-opacity">+</span>
-            </button>
-        </div>
-        <div class="flex flex-col items-center gap-2 pt-4">
-            <!-- Icon 1 - Home -->
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center hover:bg-white/30 dark:hover:bg-white/15 transition-colors cursor-pointer">
-                <flux:icon icon="house" class="w-6 h-6 text-gray-600 dark:text-gray-300" />
+     <div class="flex items-stretch overflow-hidden flex-1 min-h-0  bg-white/85 dark:bg-black/50 rounded-2xl py-2 pl-2">
+             <div id="sidebar" class="w-80 shrink-0 sticky top-0  shad-xs flex flex-col items-start h-full border  bg-white/85 rounded-2xl border-neutral-300 dark:border-neutral-800  dark:bg-black/50">
+                {{-- border-b  border-neutral-300 dark:border-neutral-800  --}}
+                <div id="header" class=" w-full h-10 flex items-center justify-between px-4">
+                    <x-mac-window-controls />
+                    <flux:switch x-data x-model="$flux.dark"  />
+                </div>
+                <div id="nav" class="flex-1  p-4">Navigasi</div>
+                {{-- border-t  border-neutral-300 dark:border-neutral-800  --}}
+                <div id="footer" class=" w-full h-10 px-3">sidebars</div>
             </div>
-
-            <!-- Icon 2 - Search -->
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center hover:bg-white/30 dark:hover:bg-white/15 transition-colors cursor-pointer">
-                <flux:icon icon="search" class="w-6 h-6 text-gray-600 dark:text-gray-300" />
-            </div>
-
-            <!-- Icon 3 - Settings -->
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center hover:bg-white/30 dark:hover:bg-white/15 transition-colors cursor-pointer">
-                <flux:icon icon="settings" class="w-6 h-6 text-gray-600 dark:text-gray-300" />
-            </div>
-
-            <!-- Icon 4 - User -->
-            <div class="w-12 h-12 rounded-xl flex items-center justify-center hover:bg-white/30 dark:hover:bg-white/15 transition-colors cursor-pointer">
-                <flux:icon icon="user" class="w-6 h-6 text-gray-600 dark:text-gray-300" />
-            </div>
-        </div>
-        <div class="mt-auto flex items-center justify-center">
-            <flux:switch x-data x-model="$flux.dark" class="rotate-90" />
-        </div>
-
-     </aside>
-     <main class="flex-1 flex flex-col my-2 ml-2 mr-2 rounded-2xl overflow-hidden border border-neutral-200 dark:border-neutral-800 shadow-sm  bg-white/75 dark:bg-black/50">
-
-         <flux:main class="p-0! flex items-stretch overflow-hidden flex-1 min-h-0 ">
-             <div id="sidebar" class="w-72 shrink-0 sticky top-0 p-4 flex flex-col h-full border-r border-neutral-200 dark:border-neutral-800">
-            Sidebar Content
-            </div>
-                <div id="content" class="flex-1 overflow-auto   h-full min-h-0 bg-white dark:bg-black/50">
+                <div id="content" class="flex-1 overflow-auto  h-full min-h-0  rounded-r-3xl dark:bg-black/50">
                 {{ $slot }}
             </div>
-        </flux:main>
-     </main>
+        </div>
     </div>
     @fluxScripts
 </body>
