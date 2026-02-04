@@ -25,19 +25,19 @@
     <div class="app-drag ml-18 absolute h-5 -mt-2.5 min-w-0 rounded-t-3xl w-full">&nbsp;</div>
 
      <div class="flex items-stretch overflow-hidden flex-1 min-h-0  bg-white/85 dark:bg-black/50 rounded-2xl py-2 pl-2">
-             <div id="sidebar" x-data="{ collapsed: false }" :class="collapsed ? 'w-16' : 'w-80'" class="shrink-0 sticky top-0 shad-xs flex flex-col items-start h-full border bg-white/85 rounded-2xl border-neutral-300 dark:border-neutral-800 dark:bg-black/50 transition-all duration-300">
+             <div id="sidebar" x-data="{ collapsed: false }" :class="collapsed ? 'w-16' : 'w-72'" class="shrink-0 sticky top-0 shad-xs flex flex-col items-start h-full border bg-white/85 rounded-2xl border-neutral-300 dark:border-neutral-800 dark:bg-black/50 transition-all duration-300">
                 {{-- border-b  border-neutral-300 dark:border-neutral-800  --}}
                 <div id="header" class="w-full h-10 flex items-center justify-between px-4">
                     <div x-show="!collapsed" x-cloak>
                         <x-mac-window-controls />
                     </div>
                     <div class="flex items-center gap-1" :class="collapsed ? 'mx-auto' : ''">
-                        <flux:button @click="collapsed = !collapsed" variant="subtle" size="sm" square inset="top bottom" aria-label="Toggle sidebar">
+                        <a @click="collapsed = !collapsed" class="cursor-pointer text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100" aria-label="Toggle sidebar">
                             <flux:icon.chevron-left x-show="!collapsed" variant="mini" />
                             <flux:icon.chevron-right x-show="collapsed" variant="mini" />
-                        </flux:button>
+                        </a>
                         <a class="cursor-pointer" x-show="!collapsed" x-cloak x-data x-on:click="$flux.dark = ! $flux.dark" variant="subtle" size="sm" square inset="top bottom" aria-label="Toggle dark mode">
-                            <flux:icon.moon x-show="!$flux.dark" variant="mini" />
+                            <flux:icon.sparkles x-show="!$flux.dark" variant="mini" />
                             <flux:icon.sun x-show="$flux.dark" x-cloak  variant="mini"/>
                         </a>
                     </div>
