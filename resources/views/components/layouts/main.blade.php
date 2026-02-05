@@ -61,10 +61,10 @@
                 <div id="footer" class="w-full h-10 px-3 flex items-center justify-between" x-show="!collapsed">
                     <x-profile-dropdown />
                     <div>
-                        <a href="#" class="p-2.5 my-1 rounded-full hover:text-accent dark:hover:text-accent text-zinc-700 dark:text-zinc-300 inline-flex items-center justify-center transition-colors">
+                        <a href="#" class="p-2.5 my-1  hover:text-accent dark:hover:text-accent text-zinc-700 dark:text-zinc-300 inline-flex items-center justify-center transition-colors">
                 <flux:icon.cog-6-tooth class="size-6" />
             </a>
-                        <a href="#" class="p-2.5 my-1 rounded-full hover:text-anc
+                        <a href="#" class="p-2.5 my-1  hover:text-accent
                          dark:hover:text-accent text-zinc-700 dark:text-zinc-300 inline-flex items-center justify-center transition-colors">
                 <flux:icon.information-circle class="size-6" />
             </a>

@@ -9,7 +9,7 @@
        </div>
        <div class="pr-2.5 flex items-center space-x-3">
         <div class="flex items-center space-x-2">
-            <flux:select size="xs" placeholder="Choose industry..." class="-mt-2">
+            <flux:select size="sm" placeholder="Choose industry..." class="-mt-1.5">
             <flux:select.option>Photography</flux:select.option>
             <flux:select.option>Design services</flux:select.option>
             <flux:select.option>Web development</flux:select.option>
@@ -18,20 +18,11 @@
             <flux:select.option>Consulting</flux:select.option>
             <flux:select.option>Other</flux:select.option>
         </flux:select>
-        <flux:select size="xs" placeholder="Choose industry..." class="-mt-2">
-            <flux:select.option>Photography</flux:select.option>
-            <flux:select.option>Design services</flux:select.option>
-            <flux:select.option>Web development</flux:select.option>
-            <flux:select.option>Accounting</flux:select.option>
-            <flux:select.option>Legal services</flux:select.option>
-            <flux:select.option>Consulting</flux:select.option>
-            <flux:select.option>Other</flux:select.option>
-        </flux:select>
-        </div>
         {{-- <x-profile-dropdown /> --}}
+       </div>
        </div>
    </div>
    <div class="p-2.5 min-h-full bg-white dark:bg-black">
-        Content Here
+        Content Heres
    </div>
 </div>
