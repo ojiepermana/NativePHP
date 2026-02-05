@@ -1,11 +1,34 @@
 <div x-data="{ collapsed: window.Alpine ? Alpine.raw($root.closest('[x-data]')).__x.$data.collapsed : false }" x-effect="collapsed = $root.closest('[x-data]').__x.$data.collapsed">
     <flux:sidebar.nav x-show="!collapsed" x-cloak>
-        <flux:sidebar.item icon="home" href="#" current class="[&_svg]:w-6 [&_svg]:h-6">Home</flux:sidebar.item>
-        <flux:sidebar.item icon="inbox" badge="12" href="#" class="[&_svg]:w-6 [&_svg]:h-6">Inbox</flux:sidebar.item>
-        <flux:sidebar.item icon="document-text" href="#" class="[&_svg]:w-6 [&_svg]:h-6">Documents</flux:sidebar.item>
-        <flux:sidebar.item icon="calendar" href="#" class="[&_svg]:w-6 [&_svg]:h-6">Calendar</flux:sidebar.item>
+        <flux:sidebar.item href="#" current>
+            <x-slot name="icon">
+                <flux:icon.home class="size-5" />
+            </x-slot>
+            Home
+        </flux:sidebar.item>
+        <flux:sidebar.item badge="12" href="#">
+            <x-slot name="icon">
+                <flux:icon.inbox class="size-5" />
+            </x-slot>
+            Inbox
+        </flux:sidebar.item>
+        <flux:sidebar.item href="#">
+            <x-slot name="icon">
+                <flux:icon.document-text class="size-5" />
+            </x-slot>
+            Documents
+        </flux:sidebar.item>
+        <flux:sidebar.item href="#">
+            <x-slot name="icon">
+                <flux:icon.calendar class="size-5" />
+            </x-slot>
+            Calendar
+        </flux:sidebar.item>
 
-        <flux:sidebar.group expandable icon="star" heading="Favorites" class="grid [&_svg]:w-6 [&_svg]:h-6">
+        <flux:sidebar.group expandable heading="Favorites" class="grid">
+            <x-slot name="icon">
+                <flux:icon.star class="size-5" />
+            </x-slot>
             <flux:sidebar.item href="#">Marketing site</flux:sidebar.item>
             <flux:sidebar.item href="#">Android app</flux:sidebar.item>
             <flux:sidebar.item href="#">Brand guidelines</flux:sidebar.item>
