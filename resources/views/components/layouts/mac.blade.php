@@ -20,17 +20,25 @@
     </script>
 </head>
 <body class="flex justify-center h-screen overflow-hidden">
-    <div class="relative flex min-w-0 flex-auto flex-row overflow-hidden  backdrop-blur-3xl bg-white/85 dark:bg-black/80  h-full rounded-2xl">
+    <div class="relative flex min-w-0 flex-auto flex-row overflow-hidden  backdrop-blur-4xl bg-white/55 dark:bg-black/40  h-full rounded-4xl">
          <!-- Drag area at the top of main -->
-    <div class="app-drag ml-18 absolute h-5 -mt-2.5 min-w-0 rounded-t-3xl w-full">&nbsp;</div>
+    <div class="app-drag ml-18 absolute h-5 -mt-2.5 min-w-0 rounded-t-4xl w-full cursor-grabbing">&nbsp;</div>
 
-     <div class="flex items-stretch overflow-hidden flex-1 min-h-0  bg-white/85 dark:bg-black/50 rounded-2xl py-2 pl-2">
-             <div id="sidebar" x-data="{ collapsed: false }" :class="collapsed ? 'w-16' : 'w-72'" class="shrink-0 sticky top-0 shad-xs flex flex-col items-start h-full border bg-white/85 rounded-2xl border-neutral-300 dark:border-neutral-800 dark:bg-black/50 transition-all duration-300">
+     <div class="flex items-stretch overflow-hidden flex-1 min-h-0  bg-white/80 dark:bg-black/80 rounded-4xl py-2 pl-2">
+             <div id="sidebar" x-data="{ collapsed: false }" :class="collapsed ? 'w-16' : 'w-72'" class="shrink-0 sticky top-0 shad-xs flex flex-col items-start h-full border bg-white/85 rounded-4xl border-neutral-300 dark:border-neutral-800 dark:bg-black/50 transition-all duration-300">
                 {{-- border-b  border-neutral-300 dark:border-neutral-800  --}}
                 <div id="header" class="w-full h-10 flex items-center justify-between px-4">
+                    @if(request()->hasHeader('X-NativePHP-Secret'))
                     <div x-show="!collapsed" x-cloak>
                         <x-mac-window-controls />
                     </div>
+                    @endif
+
+                    <div x-show="!collapsed" x-cloak>
+                        <x-brand href="#" logo="https://etos.co.id/assets/moggy-faicon.png" name="Etos Indonusa" />
+
+                    </div>
+
                     <div class="flex items-center gap-1" :class="collapsed ? 'mx-auto' : ''">
                         <a @click="collapsed = !collapsed" class="cursor-pointer text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100" aria-label="Toggle sidebar">
                             <flux:icon.chevron-left x-show="!collapsed" variant="mini" />
@@ -46,24 +54,20 @@
                     <x-navigation />
                 </div>
                 {{-- border-t  border-neutral-300 dark:border-neutral-800  --}}
-                <div id="footer" class="w-full h-10 px-3" x-show="!collapsed">
-                    <flux:dropdown position="top" align="start">
-                        <flux:sidebar.profile avatar="https://fluxui.dev/img/demo/user.png" name="Olivia Martin" />
-
-                        <flux:menu>
-                            <flux:menu.radio.group>
-                                <flux:menu.radio checked>Olivia Martin</flux:menu.radio>
-                                <flux:menu.radio>Truly Delta</flux:menu.radio>
-                            </flux:menu.radio.group>
-
-                            <flux:menu.separator />
-
-                            <flux:menu.item icon="arrow-right-start-on-rectangle">Logout</flux:menu.item>
-                        </flux:menu>
-                    </flux:dropdown>
+                <div id="footer" class="w-full h-10 px-3 flex items-center justify-between" x-show="!collapsed">
+                    <x-profile-dropdown />
+                    <div>
+                        <a href="#" class="p-2.5 my-1 rounded-full hover:text-accent dark:hover:text-accent text-zinc-700 dark:text-zinc-300 inline-flex items-center justify-center transition-colors">
+                <flux:icon.cog-6-tooth class="size-6" />
+            </a>
+                        <a href="#" class="p-2.5 my-1 rounded-full hover:text-anc
+                         dark:hover:text-accent text-zinc-700 dark:text-zinc-300 inline-flex items-center justify-center transition-colors">
+                <flux:icon.information-circle class="size-6" />
+            </a>
+                    </div>
                 </div>
             </div>
-                <div id="content" class="flex-1 overflow-auto  h-full min-h-0  rounded-r-3xl dark:bg-black/50">
+                <div id="content" class="flex-1 overflow-auto  h-full min-h-0  rounded-r-4xl dark:bg-black/50">
                 {{ $slot }}
             </div>
         </div>

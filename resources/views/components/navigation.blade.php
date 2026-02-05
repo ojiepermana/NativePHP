@@ -51,26 +51,5 @@
         </div>
     </div>
 
-    <flux:sidebar.spacer x-show="!collapsed" x-cloak />
-    <div x-show="collapsed" x-cloak class="h-4"></div>
 
-    <flux:sidebar.nav x-show="!collapsed" x-cloak>
-        <flux:sidebar.item icon="cog-6-tooth" href="#">Settings</flux:sidebar.item>
-        <flux:sidebar.item icon="information-circle" href="#">Help</flux:sidebar.item>
-    </flux:sidebar.nav>
-
-    <!-- Collapsed Icons - Bottom -->
-    <div x-show="collapsed" x-cloak class="flex flex-col items-center py-2">
-        <flux:tooltip content="Settings" position="right">
-            <a href="#" class="p-2.5 my-1 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 inline-flex items-center justify-center">
-                <flux:icon.cog-6-tooth class="size-4" />
-            </a>
-        </flux:tooltip>
-
-        <flux:tooltip content="Help" position="right">
-            <a href="#" class="p-2.5 my-1 rounded-full hover:bg-zinc-100 dark:hover:bg-zinc-800 text-zinc-700 dark:text-zinc-300 inline-flex items-center justify-center">
-                <flux:icon.information-circle class="size-4" />
-            </a>
-        </flux:tooltip>
-    </div>
 </div>
