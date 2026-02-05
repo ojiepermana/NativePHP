@@ -29,9 +29,9 @@
                 {{-- border-b  border-neutral-300 dark:border-neutral-800  --}}
                 <div id="header" class="w-full h-10 flex items-center justify-between px-4">
                     @if(request()->hasHeader('X-NativePHP-Secret'))
-                    {{-- <div x-show="!collapsed" x-cloak>
+                    <div x-show="!collapsed" x-cloak>
                         <x-mac-window-controls />
-                    </div> --}}
+                    </div>
                     @endif
 
                     <div x-show="!collapsed" x-cloak>
