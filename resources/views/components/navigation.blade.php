@@ -1,11 +1,11 @@
 <div x-data="{ collapsed: window.Alpine ? Alpine.raw($root.closest('[x-data]')).__x.$data.collapsed : false }" x-effect="collapsed = $root.closest('[x-data]').__x.$data.collapsed">
     <flux:sidebar.nav x-show="!collapsed" x-cloak>
-        <flux:sidebar.item icon="home" icon-size="lg" href="#" current>Home</flux:sidebar.item>
-        <flux:sidebar.item icon="inbox" icon-size="lg" badge="12" href="#">Inbox</flux:sidebar.item>
-        <flux:sidebar.item icon="document-text" icon-size="lg" href="#">Documents</flux:sidebar.item>
-        <flux:sidebar.item icon="calendar" icon-size="lg" href="#">Calendar</flux:sidebar.item>
+        <flux:sidebar.item icon="home" href="#" current class="[&_svg]:w-6 [&_svg]:h-6">Home</flux:sidebar.item>
+        <flux:sidebar.item icon="inbox" badge="12" href="#" class="[&_svg]:w-6 [&_svg]:h-6">Inbox</flux:sidebar.item>
+        <flux:sidebar.item icon="document-text" href="#" class="[&_svg]:w-6 [&_svg]:h-6">Documents</flux:sidebar.item>
+        <flux:sidebar.item icon="calendar" href="#" class="[&_svg]:w-6 [&_svg]:h-6">Calendar</flux:sidebar.item>
 
-        <flux:sidebar.group expandable icon="star" icon-size="lg" heading="Favorites" class="grid">
+        <flux:sidebar.group expandable icon="star" heading="Favorites" class="grid [&_svg]:w-6 [&_svg]:h-6">
             <flux:sidebar.item href="#">Marketing site</flux:sidebar.item>
             <flux:sidebar.item href="#">Android app</flux:sidebar.item>
             <flux:sidebar.item href="#">Brand guidelines</flux:sidebar.item>
