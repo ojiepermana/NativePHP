@@ -20,18 +20,18 @@
     </script>
 </head>
 <body class="flex justify-center h-screen overflow-hidden">
-    <div class="relative flex min-w-0 flex-auto flex-row overflow-hidden  backdrop-blur-4xl bg-white/55 dark:bg-black/40  h-full rounded-4xl">
+    <div class="relative flex min-w-0 flex-auto flex-row overflow-hidden  backdrop-blur-2xl bg-white/55 dark:bg-black/40  h-full rounded-2xl">
          <!-- Drag area at the top of main -->
-    <div class="app-drag ml-18 absolute h-5 -mt-2.5 min-w-0 rounded-t-4xl w-full cursor-grabbing">&nbsp;</div>
+    <div class="app-drag ml-18 absolute h-5 -mt-2.5 min-w-0 rounded-t-2xl w-full cursor-grabbing">&nbsp;</div>
 
-     <div class="flex items-stretch overflow-hidden flex-1 min-h-0  bg-white/90 dark:bg-black/60 rounded-4xl py-2 pl-2">
-             <div id="sidebar" x-data="{ collapsed: false }" :class="collapsed ? 'w-16' : 'w-70'" class="shrink-0 sticky top-0 shad-xs flex flex-col items-start h-full border bg-white/85 rounded-4xl border-neutral-300 dark:border-neutral-800 dark:bg-black/50 transition-all duration-300 space-x-2">
+     <div class="flex items-stretch overflow-hidden flex-1 min-h-0  bg-white/90 dark:bg-black/60 rounded-2xl py-2 pl-2">
+             <div id="sidebar" x-data="{ collapsed: false }" :class="collapsed ? 'w-16' : 'w-70'" class="shrink-0 sticky top-0 shad-xs flex flex-col items-start h-full border bg-white/85 rounded-2xl border-neutral-300 dark:border-neutral-800 dark:bg-black/50 transition-all duration-300 space-x-2">
                 {{-- border-b  border-neutral-300 dark:border-neutral-800  --}}
                 <div id="header" class="w-full h-10 flex items-center justify-between px-4">
                     @if(request()->hasHeader('X-NativePHP-Secret'))
-                    <div x-show="!collapsed" x-cloak>
+                    {{-- <div x-show="!collapsed" x-cloak>
                         <x-mac-window-controls />
-                    </div>
+                    </div> --}}
                     @endif
 
                     <div x-show="!collapsed" x-cloak>
@@ -67,7 +67,7 @@
                     </div>
                 </div>
             </div>
-                <div id="content" class="flex-1 overflow-auto  h-full min-h-0  rounded-r-4xl">
+                <div id="content" class="flex-1 overflow-auto  h-full min-h-0  rounded-r-2xl">
                 {{ $slot }}
             </div>
         </div>

@@ -28,7 +28,7 @@
             <flux:select.option>Other</flux:select.option>
         </flux:select>
         </div>
-        <x-profile-dropdown />
+        {{-- <x-profile-dropdown /> --}}
        </div>
    </div>
    <div class="p-2.5 min-h-full bg-white dark:bg-black">
