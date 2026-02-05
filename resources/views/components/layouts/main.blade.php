@@ -40,9 +40,13 @@
                     </div>
 
                     <div class="flex items-center gap-1" :class="collapsed ? 'mx-auto' : ''">
-                        <a @click="collapsed = !collapsed" class="cursor-pointer text-zinc-700 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-zinc-100" aria-label="Toggle sidebar">
-                            <flux:icon.arrow-left x-show="!collapsed" variant="micro" />
-                            <flux:icon.arrow-right x-show="collapsed" variant="micro" />
+                        <a @click="collapsed = !collapsed" class="cursor-pointer p-1" aria-label="Toggle sidebar">
+                            <div x-show="!collapsed">
+                                <x-sidebar-collapse-icon :collapsed="false" />
+                            </div>
+                            <div x-show="collapsed">
+                                <x-sidebar-collapse-icon :collapsed="true" />
+                            </div>
                         </a>
                         <a class="cursor-pointer" x-show="!collapsed" x-cloak x-data x-on:click="$flux.dark = ! $flux.dark" variant="subtle" size="sm" square inset="top bottom" aria-label="Toggle dark mode">
                             <flux:icon.sparkles x-show="!$flux.dark" variant="mini" />
