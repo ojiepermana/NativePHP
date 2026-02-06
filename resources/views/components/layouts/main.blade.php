@@ -25,7 +25,7 @@
     <div class="app-drag ml-18 absolute h-5 -mt-2.5 min-w-0 rounded-t-2xl w-full cursor-grabbing">&nbsp;</div>
 
      <div class="flex items-stretch overflow-hidden flex-1 min-h-0  bg-white/90 dark:bg-black/60 rounded-2xl py-2 pl-2">
-             <div id="sidebar" x-data="{ collapsed: false }" :class="collapsed ? 'w-16' : 'w-70'" class="shrink-0 sticky top-0 shad-xs flex flex-col items-start h-full border bg-white/85 rounded-2xl border-neutral-300 dark:border-neutral-800 dark:bg-black/50 transition-all duration-300 space-x-2">
+             <div id="sidebar" x-data="{ collapsed: false }" :class="collapsed ? 'w-16' : 'w-70'" class="shrink-0 sticky top-0 shad-xs flex flex-col h-full border bg-white/85 rounded-2xl border-neutral-300 dark:border-neutral-800 dark:bg-black/50 transition-all duration-300">
                 {{-- border-b  border-neutral-300 dark:border-neutral-800  --}}
                 <div id="header" class="w-full h-10 flex items-center justify-between px-4">
                     @if(request()->hasHeader('X-NativePHP-Secret'))
@@ -54,20 +54,19 @@
                         </a>
                     </div>
                 </div>
-                <div id="nav" class="flex-1 w-full p-3">
+                <div id="nav" class="flex-1 w-full p-3 overflow-y-auto">
                     <x-navigation />
                 </div>
                 {{-- border-t  border-neutral-300 dark:border-neutral-800  --}}
-                <div id="footer" class="w-full h-10 px-3 flex items-center justify-between" x-show="!collapsed">
-                    <x-profile-dropdown />
-                    <div>
-                        <a href="#" class="p-2.5 my-1  hover:text-accent dark:hover:text-accent text-zinc-700 dark:text-zinc-300 inline-flex items-center justify-center transition-colors">
-                <flux:icon.cog-6-tooth class="size-6" />
-            </a>
-                        <a href="#" class="p-2.5 my-1  hover:text-accent
-                         dark:hover:text-accent text-zinc-700 dark:text-zinc-300 inline-flex items-center justify-center transition-colors">
-                <flux:icon.information-circle class="size-6" />
-            </a>
+                <div id="footer" class="pt-2 w-full h-10 px-2 flex items-center justify-between shrink-0 border-t border-neutral-300 dark:border-neutral-800" x-show="!collapsed">
+                    <x-profile-dropdown  />
+                    <div class="flex items-center gap-1 -mt-2">
+                        <a href="#" class="p-2.5 hover:text-accent dark:hover:text-accent text-zinc-700 dark:text-zinc-300 inline-flex items-center justify-center transition-colors">
+                            <flux:icon.cog-6-tooth class="size-6!" />
+                        </a>
+                        <a href="#" class="p-2.5 hover:text-accent dark:hover:text-accent text-zinc-700 dark:text-zinc-300 inline-flex items-center justify-center transition-colors">
+                            <flux:icon.information-circle class="size-6!" />
+                        </a>
                     </div>
                 </div>
             </div>
