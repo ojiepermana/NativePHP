@@ -1,11 +1,7 @@
 <div>
-   <div id="header" class="p-2.5  border-b  border-neutral-300 dark:border-neutral-800 flex items-center justify-between h-11">
+   <div id="header" class="p-2.5   flex items-center justify-between h-11">
        <div>
-         <flux:breadcrumbs>
-            <flux:breadcrumbs.item href="#">Home</flux:breadcrumbs.item>
-            <flux:breadcrumbs.item href="#">Blog</flux:breadcrumbs.item>
-            <flux:breadcrumbs.item>Post</flux:breadcrumbs.item>
-        </flux:breadcrumbs>
+        <flux:heading size="lg">Dashboard</flux:heading>
        </div>
        <div class="pr-2.5 flex items-center space-x-3">
         <div class="flex items-center space-x-2">
@@ -22,7 +18,7 @@
        </div>
        </div>
    </div>
-   <div class="p-2.5 min-h-full bg-white dark:bg-black">
+   <div class="p-2.5  bg-white dark:bg-black h-[calc(100vh-6rem)] overflow-auto border-y  border-neutral-300 dark:border-neutral-800">
         Content Heres
    </div>
 </div>

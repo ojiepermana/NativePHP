@@ -58,13 +58,15 @@
                     <x-navigation />
                 </div>
                 {{-- border-t  border-neutral-300 dark:border-neutral-800  --}}
-                <div id="footer" class="pt-2 w-full h-10 px-2 flex items-center justify-between shrink-0 border-t border-neutral-300 dark:border-neutral-800" x-show="!collapsed">
-                    <x-profile-dropdown  />
-                    <div class="flex items-center gap-1 -mt-2">
-                        <a href="#" class="p-2.5 hover:text-accent dark:hover:text-accent text-zinc-700 dark:text-zinc-300 inline-flex items-center justify-center transition-colors">
+                <div id="footer" class="p-2 w-full h-10  flex items-center justify-between  shrink-0">
+                    <div :class="collapsed ? 'mx-auto pb-4' : ''">
+                        <x-profile-dropdown />
+                    </div>
+                    <div x-show="!collapsed" x-cloak class="flex gap-1 -mt-1">
+                        <a href="#" class="p-2 hover:text-accent dark:hover:text-accent text-zinc-700 dark:text-zinc-300 inline-flex items-center justify-center transition-colors">
                             <flux:icon.cog-6-tooth class="size-6!" />
                         </a>
-                        <a href="#" class="p-2.5 hover:text-accent dark:hover:text-accent text-zinc-700 dark:text-zinc-300 inline-flex items-center justify-center transition-colors">
+                        <a href="#" x-show="!collapsed" x-cloak class="p-2 hover:text-accent dark:hover:text-accent text-zinc-700 dark:text-zinc-300 inline-flex items-center justify-center transition-colors">
                             <flux:icon.information-circle class="size-6!" />
                         </a>
                     </div>
