@@ -2,8 +2,9 @@
 
 namespace App\Providers;
 
-use Native\Laravel\Facades\Window;
 use Native\Laravel\Contracts\ProvidesPhpIni;
+use Native\Laravel\Events\App\OpenedFromURL;
+use Native\Laravel\Facades\Window;
 
 class NativeAppServiceProvider implements ProvidesPhpIni
 {
@@ -18,6 +19,20 @@ class NativeAppServiceProvider implements ProvidesPhpIni
             ->width(1400)
             ->height(1000)
             ->transparent(true);
+
+        // Handle deep link URL
+        OpenedFromURL::listen(function (OpenedFromURL $event) {
+            $url = $event->url;
+
+            // Parse the deep link URL
+            // Format: idsapp://auth/verify?token=xxx
+            if (str_starts_with($url, config('nativephp.deeplink_scheme').'://')) {
+                $path = str_replace(config('nativephp.deeplink_scheme').'://', '', $url);
+
+                // Navigate to the path in the app
+                Window::current()->url(config('app.url').'/'.$path);
+            }
+        });
     }
 
     /**

@@ -16,9 +16,11 @@
         "laravel/octane": "^2.13",
         "laravel/reverb": "^1.0",
         "laravel/tinker": "^2.10.1",
+        "league/flysystem-google-cloud-storage": "^3.31",
         "livewire/flux": "^2.3",
         "livewire/flux-pro": "^2.3",
-        "nativephp/electron": "^1.3"
+        "nativephp/electron": "^1.3",
+        "resend/resend-laravel": "^1.1"
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
@@ -36,7 +38,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Domains/Shared/Document/DocumentHelper.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

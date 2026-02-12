@@ -60,6 +60,37 @@ return [
             'report' => false,
         ],
 
+        'gcs-generate' => [
+            'driver' => 'gcs',
+            'project_id' => env('GCS_GENERATE_PROJECT_ID', 'your-project-id'),
+            'key_file' => env('GCS_GENERATE_KEY_FILE') ? storage_path(env('GCS_GENERATE_KEY_FILE')) : null,
+            'bucket' => env('GCS_GENERATE_BUCKET', 'your-bucket'),
+            'path_prefix' => env('GCS_GENERATE_PATH_PREFIX', ''),
+            'storage_api_uri' => env('GCS_STORAGE_API_URI', null),
+            'apiEndpoint' => env('GCS_API_ENDPOINT', null),
+            'uniform_bucket_level_access' => true,
+            'metadata' => [
+                'predefinedAcl' => '',
+            ],
+            'url' => env('GCS_GENERATE_URL', 'https://storage.googleapis.com/'.env('GCS_GENERATE_BUCKET')),
+            'throw' => true,
+            'report' => true,
+        ],
+
+        'gcs-upload' => [
+            'driver' => 'gcs',
+            'project_id' => env('GCS_UPLOAD_PROJECT_ID', 'your-project-id'),
+            'key_file' => env('GCS_UPLOAD_KEY_FILE') ? storage_path(env('GCS_UPLOAD_KEY_FILE')) : null,
+            'bucket' => env('GCS_UPLOAD_BUCKET', 'your-bucket'),
+            'path_prefix' => env('GCS_UPLOAD_PATH_PREFIX', ''),
+            'storage_api_uri' => env('GCS_STORAGE_API_URI', null),
+            'apiEndpoint' => env('GCS_API_ENDPOINT', null),
+            'metadata' => [],
+            'url' => env('GCS_UPLOAD_URL', 'https://storage.googleapis.com/'.env('GCS_UPLOAD_BUCKET')),
+            'throw' => true,
+            'report' => true,
+        ],
+
     ],
 
     /*

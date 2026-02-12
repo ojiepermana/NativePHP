@@ -35,4 +35,12 @@ return [
         ],
     ],
 
+    'bni' => [
+        'client_id' => env('BNI_CLIENT_ID'),
+        'secret' => env('BNI_SECRET'),
+        'prefix' => env('BNI_PREFIX', '8'),
+        'base_url' => env('BNI_BASE_URL', 'https://apibeta.bni-ecollection.com'),
+        'timeout' => env('BNI_TIMEOUT', 30),
+    ],
+
 ];

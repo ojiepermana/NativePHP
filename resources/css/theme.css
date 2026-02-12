@@ -27,11 +27,6 @@
     }
 }
 
-/* Override sidebar item icon size */
-[data-flux-sidebar-item] svg {
-    @apply size-4.5;
-}
-
 /* Override flux icon size */
 [data-flux-icon] {
     @apply size-5;

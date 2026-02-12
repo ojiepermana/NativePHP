@@ -30,27 +30,77 @@ return [
 
     /*
     |---------------------------------------------------------------------------
-    | Layout
+    | Component Layout (v4)
     |---------------------------------------------------------------------------
-    | The view that will be used as the layout when rendering a single component
-    | as an entire page via `Route::get('/post/create', CreatePost::class);`.
-    | In this case, the view returned by CreatePost will render into $slot.
+    | The default layout view that will be used when rendering a component as a
+    | full-page component. Use the layouts:: namespace or full path.
     |
     */
 
-    'layout' => 'components.layouts.app',
+    'component_layout' => 'components.layouts.main',
 
     /*
     |---------------------------------------------------------------------------
-    | Lazy Loading Placeholder
+    | Component Placeholder (v4)
     |---------------------------------------------------------------------------
-    | Livewire allows you to lazy load components that would otherwise slow down
-    | the initial page load. Every component can have a custom placeholder or
-    | you can define the default placeholder view for all components below.
+    | The default placeholder view for lazy-loaded components.
     |
     */
 
-    'lazy_placeholder' => null,
+    'component_placeholder' => null,
+
+    /*
+    |---------------------------------------------------------------------------
+    | Component Locations (v4)
+    |---------------------------------------------------------------------------
+    | Directories where Livewire will look for single-file and multi-file
+    | (view-based) components.
+    |
+    */
+
+    'component_locations' => [
+        resource_path('views/components'),
+        resource_path('views/livewire'),
+    ],
+
+    /*
+    |---------------------------------------------------------------------------
+    | Component Namespaces (v4)
+    |---------------------------------------------------------------------------
+    | Custom namespaces for organizing view-based components.
+    | Example: <livewire:pages::dashboard />
+    |
+    */
+
+    'component_namespaces' => [
+        'layouts' => resource_path('views/layouts'),
+        'pages' => resource_path('views/pages'),
+    ],
+
+    /*
+    |---------------------------------------------------------------------------
+    | Smart Wire Keys (v4)
+    |---------------------------------------------------------------------------
+    | Helps prevent wire:key issues on deeply nested components.
+    | Note: You still need to add wire:key manually in loops.
+    |
+    */
+
+    'smart_wire_keys' => true,
+
+    /*
+    |---------------------------------------------------------------------------
+    | Make Command Defaults (v4)
+    |---------------------------------------------------------------------------
+    | Configure default component format and emoji usage for make commands.
+    | Options: 'sfc' (single-file), 'mfc' (multi-file), 'class' (traditional)
+    |
+    */
+
+    'make_command' => [
+        'type' => 'sfc',  // Default to single-file components
+        'emoji' => true,   // Use ⚡ emoji prefix for view-based components
+    ],
 
     /*
     |---------------------------------------------------------------------------
@@ -157,4 +207,15 @@ return [
     */
 
     'pagination_theme' => 'tailwind',
+
+    /*
+    |---------------------------------------------------------------------------
+    | CSP Safe Mode (v4)
+    |---------------------------------------------------------------------------
+    | Enable Content Security Policy mode to avoid unsafe-eval violations.
+    | Uses Alpine CSP build. Note: Restricts complex JS expressions.
+    |
+    */
+
+    'csp_safe' => false,
 ];

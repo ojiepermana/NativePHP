@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Str;
@@ -14,6 +15,34 @@ class User extends Authenticatable
     use HasFactory, Notifiable;
 
     /**
+     * The "type" of the primary key ID.
+     *
+     * @var string
+     */
+    protected $keyType = 'string';
+
+    /**
+     * Indicates if the IDs are auto-incrementing.
+     *
+     * @var bool
+     */
+    public $incrementing = false;
+
+    /**
+     * Boot the model.
+     */
+    protected static function boot(): void
+    {
+        parent::boot();
+
+        static::creating(function ($user) {
+            if (empty($user->id)) {
+                $user->id = (string) Str::uuid();
+            }
+        });
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var list<string>
@@ -21,7 +50,9 @@ class User extends Authenticatable
     protected $fillable = [
         'name',
         'email',
-        'password',
+        'role',
+        'email_verified_at',
+        'suspended_at',
     ];
 
     /**
@@ -30,7 +61,6 @@ class User extends Authenticatable
      * @var list<string>
      */
     protected $hidden = [
-        'password',
         'remember_token',
     ];
 
@@ -43,7 +73,7 @@ class User extends Authenticatable
     {
         return [
             'email_verified_at' => 'datetime',
-            'password' => 'hashed',
+            'suspended_at' => 'datetime',
         ];
     }
 
@@ -57,5 +87,21 @@ class User extends Authenticatable
             ->take(2)
             ->map(fn ($word) => Str::substr($word, 0, 1))
             ->implode('');
+    }
+
+    /**
+     * Get the login tokens for the user.
+     */
+    public function loginTokens(): HasMany
+    {
+        return $this->hasMany(LoginToken::class);
+    }
+
+    /**
+     * Check if the user is suspended.
+     */
+    public function isSuspended(): bool
+    {
+        return ! is_null($this->suspended_at);
     }
 }
