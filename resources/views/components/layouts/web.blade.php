@@ -30,9 +30,9 @@
     </script>
 </head>
 <body class="flex justify-center h-screen overflow-hidden">
-    <div class="relative flex min-w-0 flex-auto flex-row overflow-hidden  backdrop-blur-2xl bg-white/55 dark:bg-black/40  h-full rounded-2xl">
+    <div class="relative flex min-w-0 flex-auto flex-row overflow-hidden  backdrop-blur-3xl bg-white/55 dark:bg-black/40  h-full rounded-3xl">
          <!-- Drag area at the top of main -->
-    <div class="app-drag ml-18 absolute h-5 -mt-2.5 min-w-0 rounded-t-2xl w-full cursor-grabbing">&nbsp;</div>
+    <div class="app-drag ml-18 absolute h-5 -mt-2.5 min-w-0 rounded-t-3xl w-full cursor-grabbing">&nbsp;</div>
 
      <div class="flex items-stretch overflow-hidden flex-1 min-h-0  bg-white/90 dark:bg-black/60 ">
              <div id="sidebar" x-data :class="$store.sidebar.collapsed ? 'w-16' : 'w-70'" class="shrink-0 sticky top-0  flex flex-col h-full  bg-gradient-to-b from-blue-50/70 via-white/85 to-green-50/90 border-r border-neutral-300 dark:border-neutral-800 dark:from-blue-950/40 dark:via-black/50 dark:to-green-950/60 transition-all duration-300">

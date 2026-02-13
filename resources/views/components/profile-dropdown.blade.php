@@ -1,6 +1,6 @@
 <flux:dropdown position="top" align="start">
     <button class="relative w-6.5 h-6.5 rounded-full overflow-hidden hover:opacity-80 transition-opacity">
-        <img src="{{ employee_avatar(auth()->user()->id) }}" alt="{{ auth()->user()->name }}" class="w-full h-full object-cover" />
+        <img src="https://etos.co.id/assets/moggy-faicon.png" alt="{{ auth()->user()->name }}" class="w-full h-full object-cover" />
     </button>
     <flux:menu>
         <flux:menu.radio.group>

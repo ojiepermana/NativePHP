@@ -55,7 +55,7 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::livewire('/dashboard', DashboardPage::class)->name('dashboard');
 
-    // Job Billing routes
+// Job Billing routes
     Route::livewire('/job/billing/{status}', \App\Livewire\Pages\Job\JobBillingPage::class)
         ->name('job.billing')
         ->where('status', 'belum|lengkap|selesai');
