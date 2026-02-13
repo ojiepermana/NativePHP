@@ -35,7 +35,7 @@
     <div class="app-drag ml-18 absolute h-5 -mt-2.5 min-w-0 rounded-t-3xl w-full cursor-grabbing">&nbsp;</div>
 
      <div class="flex items-stretch overflow-hidden flex-1 min-h-0  bg-white/90 dark:bg-black/60 ">
-             <div id="sidebar" x-data :class="$store.sidebar.collapsed ? 'w-16' : 'w-70'" class="shrink-0 sticky top-0  flex flex-col h-full  bg-gradient-to-b from-blue-50/70 via-white/85 to-green-50/90 border-r border-neutral-300 dark:border-neutral-800 dark:from-blue-950/40 dark:via-black/50 dark:to-green-950/60 transition-all duration-300">
+             <div id="sidebar" x-data :class="$store.sidebar.collapsed ? 'w-16' : 'w-70'" class=" shrink-0 sticky top-0  flex flex-col h-full  bg-gradient-to-b from-blue-50/70 via-white/85 to-green-50/90 border border-neutral-300 dark:border-neutral-800 dark:from-blue-950/40 dark:via-black/50 dark:to-green-950/60 transition-all duration-300">
                 {{-- border-b  border-neutral-300 dark:border-neutral-800  --}}
                 <div id="header" class="w-full h-10 flex items-center justify-between px-4 shrink-0 ">
                     @if(request()->hasHeader('X-NativePHP-Secret'))

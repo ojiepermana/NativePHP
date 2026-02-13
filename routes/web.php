@@ -55,31 +55,6 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::livewire('/dashboard', DashboardPage::class)->name('dashboard');
 
-// Job Billing routes
-    Route::livewire('/job/billing/{status}', \App\Livewire\Pages\Job\JobBillingPage::class)
-        ->name('job.billing')
-        ->where('status', 'belum|lengkap|selesai');
-
-    // Billing Status routes
-    Route::livewire('/billing/status/{status}', \App\Livewire\Pages\Billing\BillingStatusPage::class)
-        ->name('billing.status')
-        ->where('status', 'belum|bermasalah|dibatalkan|selesai|verifikasi|arsip|digital|faktur');
-
-    // Invoice E-Invoice routes
-    Route::livewire('/invoice/proses/{status}', \App\Livewire\Pages\Invoice\InvoiceProsesStatusPage::class)
-        ->name('invoice.proses')
-        ->where('status', 'draft|proses|selesai|laporan');
-
-    // Invoice E-Invoice Detail route
-    Route::livewire('/invoice/proses/proses/detail/{nomor}', \App\Livewire\Pages\Invoice\InvoiceProsesDetailPage::class)
-        ->name('invoice.proses.detail');
-
-    // Invoice Print route
-    Route::get('/invoice/print/{id_faktur}', [
-        App\Http\Controllers\InvoicePrintController::class,
-        'show',
-    ])->name('invoice.print');
-
     Route::post('/logout', function () {
         Auth::logout();
         request()->session()->invalidate();
